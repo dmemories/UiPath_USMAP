@@ -1,0 +1,268 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence" this:Sequence.in_mailWantSend="False" this:Sequence.in_excelSheetName="Sheet1" this:Sequence.in_excelMailRange="A1:B10" this:Sequence.in_wantRefreshApp="True" this:Sequence.in_endWhenError="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bem="clr-namespace:BalaReva.EasyExcel.Main;assembly=BalaReva.EasyExcel" xmlns:bes="clr-namespace:BalaReva.EasyExcel.Sheets;assembly=BalaReva.EasyExcel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_mailTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_mailCC" Type="InArgument(x:String)" />
+    <x:Property Name="in_mailSubject" Type="InArgument(x:String)" />
+    <x:Property Name="in_mailBodyHeader" Type="InArgument(x:String)" />
+    <x:Property Name="in_mailBodyFooter" Type="InArgument(x:String)" />
+    <x:Property Name="in_mailWantSend" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_excelPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_excelSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_excelPassword" Type="InArgument(x:String)" />
+    <x:Property Name="in_excelMailRange" Type="InArgument(x:String)" />
+    <x:Property Name="in_wantRefreshApp" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_endWhenError" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>980,2107</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="56">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>BalaReva.EasyExcel.Sheets</x:String>
+      <x:String>BalaReva.EasyExcel.Base</x:String>
+      <x:String>BalaReva.EasyExcel.Main</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>BalaReva.EasyExcel</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="DExcel_SendMailExcelRange" sap:VirtualizedContainerService.HintSize="658,1942" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="excelTable" />
+      <Variable x:TypeArguments="x:String" Name="errorMsg" />
+      <Variable x:TypeArguments="x:String" Default="DExcel_SendMailExcelRange" Name="seqName" />
+      <Variable x:TypeArguments="x:Int32" Name="timeout">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" Value="7000" />
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="616,1850" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="578,1623" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[in_wantRefreshApp]" sap:VirtualizedContainerService.HintSize="536,361" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,213" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:KillProcess Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="outlook" />
+                <ui:InvokePowerShell x:TypeArguments="x:String" ContinueOnError="{x:Null}" CommandText="start outlook" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_3" IsScript="True" />
+              </Sequence>
+            </If.Then>
+          </If>
+          <bem:ExcelScope ModifyPassword="{x:Null}" DisplayName="Excel Scope" FilePassword="[If(String.IsNullOrEmpty(in_excelPassword), Nothing, in_excelPassword)]" FilePath="[in_excelPath]" sap:VirtualizedContainerService.HintSize="536,164" sap2010:WorkflowViewState.IdRef="ExcelScope_2" Visible="False">
+            <bem:ExcelScope.Body>
+              <ActivityAction x:TypeArguments="bem:ExcelParam">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="bem:ExcelParam" Name="WorkBookObj" />
+                </ActivityAction.Argument>
+                <bes:CopyToClipboard Cell="[in_excelMailRange]" ContinueOnError="False" Delay="0" DisplayName="CopyTo Clipboard" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CopyToClipboard_2" SheetName="[in_excelSheetName]" />
+              </ActivityAction>
+            </bem:ExcelScope.Body>
+          </bem:ExcelScope>
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click New Mail" sap:VirtualizedContainerService.HintSize="536,68" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="de425b11-3e31-4f82-a70d-103fd432afc9" Selector="&lt;wnd app='outlook.exe' cls='rctrl_renwnd32' title='*' /&gt;&lt;uia cls='MsoCommandBar' name='Ribbon' /&gt;&lt;uia cls='NetUIChunk' name='New' /&gt;&lt;uia cls='NetUIRibbonButton' name='New Email' /&gt;" TimeoutMS="[timeout]">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type MailTo" sap:VirtualizedContainerService.HintSize="536,96" sap2010:WorkflowViewState.IdRef="TypeInto_6" SimulateType="True" Text="[in_mailTo + &quot; [k(tab)]&quot; + in_mailCC + &quot; [k(tab)]&quot; + in_mailSubject + &quot; [k(tab)]&quot;]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="e0587f33-d0a7-4877-b98f-ad93e91f131c">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Body Header" sap:VirtualizedContainerService.HintSize="536,96" sap2010:WorkflowViewState.IdRef="TypeInto_7" SimulateType="True" Text="[in_mailBodyHeader + &quot;[k(enter)]&quot;]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="c1c0b605-43c1-4ffe-8238-0b9fe47541f7">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Paste MailRange From Clipboard" sap:VirtualizedContainerService.HintSize="536,116" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="v" KeyModifiers="Ctrl">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="8e7bfedb-0ed4-4692-a291-891a1865905d">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Body Footer" sap:VirtualizedContainerService.HintSize="536,96" sap2010:WorkflowViewState.IdRef="TypeInto_8" SimulateType="True" Text="[&quot;[k(enter)]&quot; + in_mailBodyFooter]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d2b05470-4f8d-4999-a211-64c24f3aa23b">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+          <If Condition="[in_mailWantSend]" sap:VirtualizedContainerService.HintSize="536,254" sap2010:WorkflowViewState.IdRef="If_4">
+            <If.Then>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Send" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0a13b0eb-8847-43a7-871b-7d20bcde18c2" InformativeScreenshot="855bf359e05725df262d9c55559e4cd1" Selector="&lt;wnd app='outlook.exe' cls='rctrl_renwnd32' title='*' /&gt;&lt;wnd aaname='Form Regions' cls='AfxWndW' /&gt;&lt;wnd ctrlid='*' title='&amp;amp;Send' /&gt;" TimeoutMS="[timeout]">
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+              </ui:Click>
+            </If.Then>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="582,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[errorMsg]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[exception.Message]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <If Condition="[String.IsNullOrEmpty(errorMsg)]" sap:VirtualizedContainerService.HintSize="713,239" sap2010:WorkflowViewState.IdRef="If_3">
+          <If.Then>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;-----------------------------------------------------------------------------------------------&quot; &amp; vbCrLf &amp; seqName &amp; &quot; (Successfully)&quot; &amp; vbCrlf &amp; &quot;    mailTo : &quot; &amp; in_mailTo &amp; vbCrlf &amp; &quot;    mailCC : &quot; &amp; in_mailCC &amp; vbCrlf &amp; &quot;    mailSubject : &quot; &amp; in_mailSubject &amp; vbCrlf &amp; &quot;    mailBodyHeader : &quot; &amp; in_mailBodyHeader &amp; vbCrlf &amp; &quot;    mailBodyFooter : &quot; &amp; in_mailBodyFooter &amp; vbCrlf &amp; &quot;    mailWantSend : &quot; &amp; If(in_mailWantSend, &quot;True&quot;, &quot;False&quot;) &amp; vbCrlf &amp; &quot;    excelPath : &quot; &amp; in_excelPath &amp; vbCrlf &amp; &quot;    excelSheetName : &quot; &amp; in_excelSheetName &amp; vbCrlf &amp; &quot;    excelPassword : &quot; &amp; in_excelPassword &amp; vbCrlf &amp; &quot;    excelMailRange : &quot; &amp; in_excelMailRange &amp; vbCrlf &amp; &quot;    wantRefreshApp : &quot; &amp; If(in_wantRefreshApp, &quot;True&quot;, &quot;False&quot;) &amp; vbCrlf &amp; &quot;    endWhenError : &quot; &amp; If(in_endWhenError, &quot;True&quot;, &quot;False&quot;)]" />
+          </If.Then>
+          <If.Else>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;-----------------------------------------------------------------------------------------------&quot; &amp; vbCrLf &amp; seqName &amp; &quot; (Failed)&quot; &amp; vbCrlf &amp; &quot;    ErrorMsg : &quot; &amp; errorMsg &amp; vbCrlf &amp; &quot;    mailTo : &quot; &amp; in_mailTo &amp; vbCrlf &amp; &quot;    mailCC : &quot; &amp; in_mailCC &amp; vbCrlf &amp; &quot;    mailSubject : &quot; &amp; in_mailSubject &amp; vbCrlf &amp; &quot;    mailBodyHeader : &quot; &amp; in_mailBodyHeader &amp; vbCrlf &amp; &quot;    mailBodyFooter : &quot; &amp; in_mailBodyFooter &amp; vbCrlf &amp; &quot;    mailWantSend : &quot; &amp; If(in_mailWantSend, &quot;True&quot;, &quot;False&quot;) &amp; vbCrlf &amp; &quot;    excelPath : &quot; &amp; in_excelPath &amp; vbCrlf &amp; &quot;    excelSheetName : &quot; &amp; in_excelSheetName &amp; vbCrlf &amp; &quot;    excelPassword : &quot; &amp; in_excelPassword &amp; vbCrlf &amp; &quot;    excelMailRange : &quot; &amp; in_excelMailRange &amp; vbCrlf &amp; &quot;    wantRefreshApp : &quot; &amp; If(in_wantRefreshApp, &quot;True&quot;, &quot;False&quot;) &amp; vbCrlf &amp; &quot;    endWhenError : &quot; &amp; If(in_endWhenError, &quot;True&quot;, &quot;False&quot;)]" />
+          </If.Else>
+        </If>
+      </TryCatch.Finally>
+    </TryCatch>
+  </Sequence>
+</Activity>

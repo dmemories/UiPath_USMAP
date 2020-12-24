@@ -1,0 +1,36 @@
+// #masterKey
+// Key, Type (0: click, 1: list, 2: textbox, 3: injectJs), Selector
+// == How to call ==
+// {Click Activity} Split(keyDic("test.ipAddr.selector"), "##")[0]
+// keyDic("test.ipAddr.type")
+// keyDic("test.ipAddr.selector")
+
+
+remark,		2, <webctrl id='remark' tag='TEXTAREA' />
+whiteList,	3, <webctrl id='inputCpWhiteList' tag='INPUT' type='text' />
+
+#test
+ipAddr,		1, <webctrl id='inputIpAddress' tag='SELECT'/>
+port,		1, <webctrl id='inputPort' tag='SELECT'/>
+ipHyb,		1, <webctrl id='inputIpAddressHybrid' tag='SELECT'/>
+ipSFTP,		1, <webctrl id='inputIpipSftp' tag='SELECT'/>
+spUrl,		1, <webctrl id='inputSpUrl' tag='SELECT'/>
+notiUrl,	1, <webctrl id='inputNotifyUrl' tag='SELECT'/>
+
+#prod
+ipAddr,		1, <webctrl id='inputIpAddress2' tag='SELECT' />
+port,		1, <webctrl id='inputPort2' tag='SELECT' />
+ipHyb,		1, <webctrl id='inputHybridPort2' tag='SELECT' />
+ipSFTP,		1, <webctrl id='ipSftp2' tag='SELECT' />
+spUrl,		1, <webctrl id='inputSpUrl2' tag='SELECT' />
+notiUrl,	1, <webctrl id='inputNotifyUrl2' tag='SELECT' />
+
+#imple
+stage,		0, <webctrl id='stageTest' tag='INPUT' type='radio' /> ## <webctrl id='stageProd' tag='INPUT' type='radio' />
+operatFlow,	1, <webctrl id='operationFlow' tag='SELECT' />
+instantService,	3,
+mobileTest,	3,
+csDepartment,	3,
+mobilePostTest,	3,
+tetative,	3,
+commercial,	3,
