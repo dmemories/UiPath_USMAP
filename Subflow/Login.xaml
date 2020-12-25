@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1109,1449</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>937,1689</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -68,7 +68,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="509,1284" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="509,1484" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="myBrowser" />
     </Sequence.Variables>
@@ -148,13 +148,42 @@
         </ActivityAction>
       </ui:BrowserScope.Body>
     </ui:BrowserScope>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="467,168" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="35e7e51e4526e79b9366d02a77b090a5" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Popup" sap:VirtualizedContainerService.HintSize="467,68" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1ec88b18-5d95-49f7-b7b3-73ad345febfa" Selector="&lt;wnd app='firefox.exe' cls='MozillaWindowClass' title='::Employee Service:: — Mozilla Firefox' idx='*' /&gt;&lt;uia role='group' /&gt;&lt;uia name='Continue' role='button' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="467,260" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="35e7e51e4526e79b9366d02a77b090a5" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+          </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>
     </ui:BrowserScope>

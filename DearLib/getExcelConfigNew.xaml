@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,2477</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1072,2816</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DMoveFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -83,7 +83,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="getExcelConfigNew" sap:VirtualizedContainerService.HintSize="810,2312" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="getExcelConfigNew" sap:VirtualizedContainerService.HintSize="1082,2651" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="errorMsg" />
       <Variable x:TypeArguments="sd:DataTable" Name="tempDataTable" />
@@ -92,22 +92,22 @@
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;,&quot;H&quot;,&quot;I&quot;,&quot;J&quot;,&quot;K&quot;,&quot;L&quot;,&quot;M&quot;,&quot;N&quot;,&quot;O&quot;,&quot;P&quot;,&quot;Q&quot;,&quot;R&quot;,&quot;S&quot;,&quot;T&quot;,&quot;U&quot;,&quot;V&quot;,&quot;W&quot;,&quot;X&quot;,&quot;Y&quot;,&quot;Z&quot;}]" Name="columnTemplate" />
       <Variable x:TypeArguments="x:Int32" Name="keyColNum" />
       <Variable x:TypeArguments="x:String" Name="tempKey" />
-      <Variable x:TypeArguments="x:String" Name="tempValue" />
+      <Variable x:TypeArguments="x:Object" Name="tempObj" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="768,2220" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1040,2559" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="730,1993" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="1002,2332" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="688,682" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Enumerable.Range(0, columnTemplate.Length)]">
+          <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="960,682" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Enumerable.Range(0, columnTemplate.Length)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:Int32">
                 <ActivityAction.Argument>
@@ -147,7 +147,7 @@
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
-          <Assign sap:VirtualizedContainerService.HintSize="688,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign sap:VirtualizedContainerService.HintSize="960,60" sap2010:WorkflowViewState.IdRef="Assign_11">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_config]</OutArgument>
             </Assign.To>
@@ -155,38 +155,41 @@
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String, Object)]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:ExcelApplicationScope AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="688,1079" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Password="[(if(String.IsNullOrEmpty(in_xcelPassword), Nothing, in_xcelPassword))]" ReadOnly="True" Visible="False" Workbook="[tempWorkbook]" WorkbookPath="[in_xcelPath]">
+          <ui:ExcelApplicationScope AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="960,1418" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Password="[(if(String.IsNullOrEmpty(in_xcelPassword), Nothing, in_xcelPassword))]" ReadOnly="True" Visible="False" Workbook="[tempWorkbook]" WorkbookPath="[in_xcelPath]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Sheets" sap:VirtualizedContainerService.HintSize="654,970" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[tempWorkbook.GetSheets]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Sheets" sap:VirtualizedContainerService.HintSize="926,1309" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[tempWorkbook.GetSheets]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="sheetName" />
                       </ActivityAction.Argument>
-                      <Sequence sap:VirtualizedContainerService.HintSize="618,837" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence sap:VirtualizedContainerService.HintSize="890,1176" sap2010:WorkflowViewState.IdRef="Sequence_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExcelReadRange Range="{x:Null}" AddHeaders="False" DataTable="[tempDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="576,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[sheetName]" />
-                        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[tempDataTable]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="576,646" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                        <ui:ExcelReadRange Range="{x:Null}" AddHeaders="False" DataTable="[tempDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="848,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[sheetName]" />
+                        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[tempDataTable]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="848,985" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                           <ui:ForEachRow.Body>
                             <ActivityAction x:TypeArguments="sd:DataRow">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,499" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="798,838" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="s:DateTime" Name="tempDateTime" />
+                                </Sequence.Variables>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                <Assign sap:VirtualizedContainerService.HintSize="756,60" sap2010:WorkflowViewState.IdRef="Assign_15">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:String">[tempkey]</OutArgument>
                                   </Assign.To>
@@ -194,24 +197,53 @@
                                     <InArgument x:TypeArguments="x:String">[row(keyColNum).ToString().Trim()]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                <Assign sap:VirtualizedContainerService.HintSize="756,60" sap2010:WorkflowViewState.IdRef="Assign_16">
                                   <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[tempValue]</OutArgument>
+                                    <OutArgument x:TypeArguments="x:Object">[tempObj]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[row(valColNum).ToString().Trim()]</InArgument>
+                                    <InArgument x:TypeArguments="x:Object">[row(valColNum)]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <If Condition="[String.IsNullOrEmpty(tempValue) or tempValue = &quot;Value&quot; or String.IsNullOrEmpty(tempKey)]" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_11">
+                                <If Condition="[String.IsNullOrEmpty(tempObj.ToString) or tempObj.ToString.Trim() = &quot;Value&quot; or String.IsNullOrEmpty(tempKey)]" sap:VirtualizedContainerService.HintSize="756,546" sap2010:WorkflowViewState.IdRef="If_11">
                                   <If.Else>
-                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
-                                      <Assign.To>
-                                        <OutArgument x:TypeArguments="x:Object">[out_config(tempkey)]</OutArgument>
-                                      </Assign.To>
-                                      <Assign.Value>
-                                        <InArgument x:TypeArguments="x:String">[tempValue]</InArgument>
-                                      </Assign.Value>
-                                    </Assign>
+                                    <If Condition="[tempObj.GetType.ToString.Equals(&quot;System.DateTime&quot;)]" DisplayName="If Type is DateTime" sap:VirtualizedContainerService.HintSize="611,399" sap2010:WorkflowViewState.IdRef="If_14">
+                                      <If.Then>
+                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="s:DateTime">[tempDateTime]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="s:DateTime">[CDate(tempObj)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[out_config(tempkey)]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[Day(tempDateTime).ToString + "/" + Month(tempDateTime).ToString + "/" + Year(tempDateTime).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[out_config(tempkey)]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">[tempObj.ToString.Trim()]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </If.Else>
+                                    </If>
                                   </If.Else>
                                 </If>
                               </Sequence>
@@ -228,7 +260,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="734,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1006,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

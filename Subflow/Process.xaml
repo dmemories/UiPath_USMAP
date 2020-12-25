@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1060,2625</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>915,3068</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -71,7 +71,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="692,2460" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="692,2903" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="imple." Name="implementKey" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="serviceDic" />
@@ -97,13 +97,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="650,2115" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f1c2c50da8051012cc363eb01a5ee10e" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="650,2558" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f1c2c50da8051012cc363eb01a5ee10e" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="616,1969" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="616,2412" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -198,13 +198,13 @@
                 </ui:Target>
               </ui:SendHotkey.Target>
             </ui:SendHotkey>
-            <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each Key" sap:VirtualizedContainerService.HintSize="574,1323" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Enumerable.Range(0, serviceDic.Keys.Count)]">
+            <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each Key" sap:VirtualizedContainerService.HintSize="574,1766" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Enumerable.Range(0, serviceDic.Keys.Count)]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:Int32">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="538,1190" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="538,1633" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="selector" />
                       <Variable x:TypeArguments="x:String" Name="key" />
@@ -253,7 +253,7 @@
                       </Assign.Value>
                     </Assign>
                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="496,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[&quot;Selector : &quot; + selector + vbCrlf + &quot;Type : &quot; + in_keyDic(key + &quot;.type&quot;) + vbCrlf + &quot;Value : &quot; + val]" />
-                    <Switch x:TypeArguments="x:Int32" DisplayName="Switch Type" Expression="[CInt(in_keyDic(key + &quot;.type&quot;))]" sap:VirtualizedContainerService.HintSize="496,295" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                    <Switch x:TypeArguments="x:Int32" DisplayName="Switch Type" Expression="[CInt(in_keyDic(key + &quot;.type&quot;))]" sap:VirtualizedContainerService.HintSize="496,738" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                       <Switch.Default>
                         <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[&quot;Unknown Type : &quot; + in_keyDic(key + &quot;.type&quot;)]" />
                       </Switch.Default>
@@ -294,6 +294,47 @@
                           </ui:Target>
                         </ui:Click.Target>
                       </ui:Click>
+                      <Sequence x:Key="3" DisplayName="Inject Script Document Id" sap:VirtualizedContainerService.HintSize="376,489" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Int32" Name="startPos" />
+                          <Variable x:TypeArguments="x:Int32" Name="endPos" />
+                          <Variable x:TypeArguments="x:String" Name="tempStr" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[startPos]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[selector.IndexOf("id='") + 4]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[endPos]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[selector.Substring(startPos).IndexOf("'")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[&quot;Inject JS : &quot; + &quot;function(){ document.getElementById('&quot; + selector.Substring(startPos, endPos) + &quot;').value = '&quot; + val + &quot;'; }&quot;]" />
+                        <ui:InjectJsScript InputParameter="{x:Null}" ScriptOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="InjectJsScript_1" ScriptCode="[&quot;function(){ document.getElementById('&quot; + selector.Substring(startPos, endPos) + &quot;').value = '&quot; + val + &quot;'; }&quot;]">
+                          <ui:InjectJsScript.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2bcb1798-55d2-46c3-810e-19bab45604a3">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:InjectJsScript.Target>
+                        </ui:InjectJsScript>
+                      </Sequence>
                     </Switch>
                   </Sequence>
                 </ActivityAction>

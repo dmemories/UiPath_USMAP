@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Tset" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1060,831" sap2010:WorkflowViewState.IdRef="Tset_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Tset" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="915,831" sap2010:WorkflowViewState.IdRef="Tset_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
       <x:String>System.Activities</x:String>
@@ -39,7 +39,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -76,21 +76,33 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Tset" sap:VirtualizedContainerService.HintSize="376,305" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="s:String[]" Name="strArr" />
-      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="g_keyDic" />
-      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dic" />
+      <Variable x:TypeArguments="x:String" Default=" &lt;webctrl id='cadFrom' tag='INPUT' type='text' /&gt;" Name="str" />
+      <Variable x:TypeArguments="x:Int32" Name="startPos" />
+      <Variable x:TypeArguments="x:Int32" Name="endPos" />
+      <Variable x:TypeArguments="x:String" Name="tempStr" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="serviceDics" />
+      <Variable x:TypeArguments="x:Object" Name="x" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Read Key Data" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="DearLib\DDeserialize_DData.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Read Input Config (Service File)" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DearLib\getExcelConfigNew.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_textFilePath">Data\key_data.txt</InArgument>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dictionary">[g_keyDic]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_xcelPath">C:\Users\piyab505\Desktop\USMAP\USMAP Project\Data\Temp\Template.xlsx</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_xcelPassword" />
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_endWhenError">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_keyColumn">B</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_valueColumn">C</InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">[serviceDics]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[If(g_keyDic.Keys.Contains(&quot;test.ipAddr.selecto2r&quot;), &quot;T&quot;, &quot;F&quot;)]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[serviceDics(&quot;imple.instantService&quot;).ToString]" />
   </Sequence>
 </Activity>
