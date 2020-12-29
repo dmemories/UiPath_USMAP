@@ -25,6 +25,10 @@ ipSFTP,		1, <webctrl id='ipSftp2' tag='SELECT' />
 spUrl,		1, <webctrl id='inputSpUrl2' tag='SELECT' />
 notiUrl,	1, <webctrl id='inputNotifyUrl2' tag='SELECT' />
 
+#vas
+group,		1, <webctrl id='vasGroup1' tag='SELECT' />
+type,		1, <webctrl id='vasType1' tag='SELECT' />
+
 #imple
 stage,		0, <webctrl id='stageTest' tag='INPUT' type='radio' /> ## <webctrl id='stageProd' tag='INPUT' type='radio' />
 operatFlow,	1, <webctrl id='operationFlow' tag='SELECT' />
