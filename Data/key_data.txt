@@ -46,3 +46,8 @@ tetativeMin,	3, <webctrl id='tentativeLaunchMinutes' tag='SELECT' />
 commercial,	3, <webctrl id='commercialLaunchDate' tag='INPUT' type='text' />
 commercialHr,	3, <webctrl id='commercialLaunchHours' tag='SELECT' />
 commercialMin,	3, <webctrl id='commercialLaunchMinutes' tag='SELECT' />
+
+#specific
+chargeGroup1,	1, <webctrl id='cccGroup0' tag='SELECT' />
+chargeGroup2,	1, <webctrl id='cccGroup1' tag='SELECT' />
+chargeGroup3,	2, <webctrl id='cccGroup2' tag='SELECT' />
