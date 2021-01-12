@@ -1,13 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_referId" Type="InArgument(x:String)" />
+    <x:Property Name="in_inputFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_keyDic" Type="InArgument(scg:Dictionary(x:String, x:String))" />
     <x:Property Name="in_timeout" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1005,2473</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1005,3108</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -71,7 +71,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="692,2308" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="692,2903" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="imple." Name="implementKey" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="serviceDic" />
@@ -81,17 +81,29 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="650,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_referId]" />
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="650,2115" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f1c2c50da8051012cc363eb01a5ee10e" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="650,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_inputFilePath]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Read Input Config (Service File)" sap:VirtualizedContainerService.HintSize="650,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DearLib\getExcelConfigNew.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_xcelPath">[in_inputFilePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_xcelPassword" />
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_endWhenError">True</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_keyColumn">B</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_valueColumn">C</InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">[serviceDic]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="650,2558" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f1c2c50da8051012cc363eb01a5ee10e" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="616,1969" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="referIdRow" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="616,2412" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -116,37 +128,15 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="tableRow" DisplayName="Get Attribute (ReferIdRow)" sap:VirtualizedContainerService.HintSize="574,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
-              <ui:GetAttribute.Result>
-                <OutArgument x:TypeArguments="x:String">[referIdRow]</OutArgument>
-              </ui:GetAttribute.Result>
-              <ui:GetAttribute.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a82f4446-8fc2-47fb-856b-046d59d241e3" Selector="[&quot;&lt;webctrl aaname='&quot; + in_referId + &quot;' parentid='body' tag='A' /&gt;&quot;]" TimeoutMS="[in_timeout]">
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:GetAttribute.Target>
-            </ui:GetAttribute>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Activity" sap:VirtualizedContainerService.HintSize="574,68" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
-              <ui:Click.CursorPosition>
-                <ui:CursorPosition Position="Center">
-                  <ui:CursorPosition.OffsetX>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetX>
-                  <ui:CursorPosition.OffsetY>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetY>
-                </ui:CursorPosition>
-              </ui:Click.CursorPosition>
-              <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f49726a9-71dd-4e61-80c1-281159d5cbd0" Selector="[&quot;&lt;webctrl id='activity_waiting*' parentid='btn_activity_waiting*' tag='I' tableRow='&quot; + referIdRow + &quot;' /&gt;&quot;]" TimeoutMS="[in_timeout]">
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:Click.Target>
-            </ui:Click>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Click Service Number" sap:VirtualizedContainerService.HintSize="574,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DearLib\DClick.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_selector">["&lt;html app='firefox.exe' title='USMAP' /&gt;&lt;webctrl aaname='" + serviceDic("serviceNo").ToString + "' parentid='body' tag='A' /&gt;"]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_clickType">0</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">[in_timeout]</InArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="in_endWhenError">True</InArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="in_wantClickCurrPos">False</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
             <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 4 seconds" Duration="00:00:04" sap:VirtualizedContainerService.HintSize="574,22" sap2010:WorkflowViewState.IdRef="Delay_1">
               <TextExpression.Namespaces>
                 <sco:Collection x:TypeArguments="x:String">
@@ -205,13 +195,13 @@
                 </ui:Target>
               </ui:SendHotkey.Target>
             </ui:SendHotkey>
-            <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each Key" sap:VirtualizedContainerService.HintSize="574,1231" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Enumerable.Range(0, serviceDic.Keys.Count)]">
+            <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each Key" sap:VirtualizedContainerService.HintSize="574,1766" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Enumerable.Range(0, serviceDic.Keys.Count)]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:Int32">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="538,1098" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="538,1633" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="selector" />
                       <Variable x:TypeArguments="x:String" Name="key" />
@@ -260,7 +250,7 @@
                       </Assign.Value>
                     </Assign>
                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="496,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[&quot;Selector : &quot; + selector + vbCrlf + &quot;Type : &quot; + in_keyDic(key + &quot;.type&quot;) + vbCrlf + &quot;Value : &quot; + val]" />
-                    <Switch x:TypeArguments="x:Int32" DisplayName="Switch Type" Expression="[CInt(in_keyDic(key + &quot;.type&quot;))]" sap:VirtualizedContainerService.HintSize="496,203" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                    <Switch x:TypeArguments="x:Int32" DisplayName="Switch Type" Expression="[CInt(in_keyDic(key + &quot;.type&quot;))]" sap:VirtualizedContainerService.HintSize="496,738" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                       <Switch.Default>
                         <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[&quot;Unknown Type : &quot; + in_keyDic(key + &quot;.type&quot;)]" />
                       </Switch.Default>
@@ -301,7 +291,7 @@
                           </ui:Target>
                         </ui:Click.Target>
                       </ui:Click>
-                      <Sequence x:Key="3" DisplayName="Inject Script Document Id" sap:VirtualizedContainerService.HintSize="376,487" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <Sequence x:Key="3" DisplayName="Inject Script Document Id" sap:VirtualizedContainerService.HintSize="376,489" sap2010:WorkflowViewState.IdRef="Sequence_9">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:Int32" Name="startPos" />
                           <Variable x:TypeArguments="x:Int32" Name="endPos" />
@@ -350,12 +340,6 @@
           </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
   </Sequence>
 </Activity>

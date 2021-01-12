@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Tset" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="915,831" sap2010:WorkflowViewState.IdRef="Tset_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Tset" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1005,831" sap2010:WorkflowViewState.IdRef="Tset_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
       <x:String>System.Activities</x:String>
@@ -74,35 +74,50 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Tset" sap:VirtualizedContainerService.HintSize="376,305" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Tset" sap:VirtualizedContainerService.HintSize="476,586" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default=" &lt;webctrl id='cadFrom' tag='INPUT' type='text' /&gt;" Name="str" />
-      <Variable x:TypeArguments="x:Int32" Name="startPos" />
-      <Variable x:TypeArguments="x:Int32" Name="endPos" />
-      <Variable x:TypeArguments="x:String" Name="tempStr" />
-      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="serviceDics" />
-      <Variable x:TypeArguments="x:Object" Name="x" />
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="inputWorkbook" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Read Input Config (Service File)" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DearLib\getExcelConfigNew.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_xcelPath">C:\Users\piyab505\Desktop\USMAP\USMAP Project\Data\Temp\Template.xlsx</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_xcelPassword" />
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_endWhenError">True</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_keyColumn">B</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_valueColumn">C</InArgument>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">[serviceDics]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[serviceDics(&quot;imple.instantService&quot;).ToString]" />
+    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,494" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" Workbook="[inputWorkbook]" WorkbookPath="Data\Input\SS.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,385" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="inputTable" />
+              <Variable x:TypeArguments="x:Int32" Name="g_referIdColNum">
+                <Variable.Default>
+                  <Literal x:TypeArguments="x:Int32" Value="3" />
+                </Variable.Default>
+              </Variable>
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[inputTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[inputWorkbook.GetSheets(0)]" />
+            <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Enumerable.Range(0, 999)]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:Int32">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                  </ActivityAction.Argument>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[If (inputTable.Rows(i)(g_referIdColNum).GetType.ToString.Equals(&quot;System.DBNull&quot;), &quot;&quot;, inputTable.Rows(i)(g_referIdColNum).ToString)]" />
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
   </Sequence>
 </Activity>

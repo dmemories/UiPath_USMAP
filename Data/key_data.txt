@@ -50,4 +50,4 @@ commercialMin,	3, <webctrl id='commercialLaunchMinutes' tag='SELECT' />
 #specific
 chargeGroup1,	1, <webctrl id='cccGroup0' tag='SELECT' />
 chargeGroup2,	1, <webctrl id='cccGroup1' tag='SELECT' />
-chargeGroup3,	2, <webctrl id='cccGroup2' tag='SELECT' />
+chargeGroup3,	1, <webctrl id='cccGroup2' tag='SELECT' />
