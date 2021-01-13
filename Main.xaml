@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1005,831" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1005,843" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="34">
+    <scg:List x:TypeArguments="x:String" Capacity="68">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -35,10 +35,11 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -69,6 +70,7 @@
       <AssemblyReference>BalaReva.EasyExcel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Main" sap:VirtualizedContainerService.HintSize="991,638" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -76,18 +78,10 @@
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="g_config" />
       <Variable x:TypeArguments="x:Int32" Default="25000" Name="g_timeout" />
       <Variable x:TypeArguments="x:String" Default="Data\" Name="g_dataDirPath" />
-      <Variable x:TypeArguments="x:String" Name="g_inputFilePath">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="g_dataDirPath + g_inputFilePath" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="[g_dataDirPath + g_inputFilePath]" Name="g_inputFilePath" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="g_keyDic" />
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="inputWorkbook" />
-      <Variable x:TypeArguments="x:Int32" Name="g_referIdColNum">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="3" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="3" Name="g_referIdColNum" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -107,7 +101,7 @@
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">150,27</av:Point>
           <av:Size x:Key="ShapeSize">200,66</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">350,60 500,60 500,148.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">350,60 380,60 380,229.5 500,229.5 500,199.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Sequence DisplayName="Clear &amp; Init" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -219,17 +213,11 @@
                           </If>
                           <If Condition="[currRefId = nextRefId]" sap:VirtualizedContainerService.HintSize="484,259" sap2010:WorkflowViewState.IdRef="If_3">
                             <If.Else>
-                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Do Process" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Subflow\Process.xaml">
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Do Process" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Subflow\CheckActivity.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_referId">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="currRefId" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_keyDic">
-                                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="g_keyDic" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="g_timeout" />
-                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_referId">[currRefId]</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_keyDic">[g_keyDic]</InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeout">[g_timeout]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </If.Else>
