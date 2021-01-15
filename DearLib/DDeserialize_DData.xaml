@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,1852</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>989,2263</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DeserializeJson_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -70,22 +70,23 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DeserializeDData" sap:VirtualizedContainerService.HintSize="604,1687" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DeserializeDData" sap:VirtualizedContainerService.HintSize="743,2058" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="txtdata" />
-      <Variable x:TypeArguments="x:String" Default="[Nothing]" Name="masterKey" />
+      <Variable x:TypeArguments="x:String" Default="[Nothing]" Name="className" />
       <Variable x:TypeArguments="s:String[]" Name="strArr" />
-      <Variable x:TypeArguments="x:Int32" Default="0" Name="indexKey" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="indexAttribute" />
       <Variable x:TypeArguments="x:Int32" Default="1" Name="indexType" />
-      <Variable x:TypeArguments="x:Int32" Default="2" Name="indexSelector" />
+      <Variable x:TypeArguments="x:Int32" Default="2" Name="indexActivityWord" />
+      <Variable x:TypeArguments="x:Int32" Default="3" Name="indexSelector" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[txtdata]" DisplayName="Read text file" FileName="[in_textFilePath]" sap:VirtualizedContainerService.HintSize="562,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Assign sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <ui:ReadTextFile Content="[txtdata]" DisplayName="Read text file" FileName="[in_textFilePath]" sap:VirtualizedContainerService.HintSize="701,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <Assign sap:VirtualizedContainerService.HintSize="701,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[out_dictionary]</OutArgument>
       </Assign.To>
@@ -93,24 +94,24 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(of String, String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,1376" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(txtdata, vbCrlf)]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="701,1747" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(txtdata, vbCrlf)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="txtLine" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1242" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="665,1613" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Left(txtLine, 1) = &quot;/&quot;]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[Left(txtLine, 1) = &quot;/&quot;]" sap:VirtualizedContainerService.HintSize="623,208" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
                 <ui:Continue sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Continue_2" />
               </If.Then>
             </If>
-            <If Condition="[Left(txtLine, 1) = &quot;#&quot;]" sap:VirtualizedContainerService.HintSize="484,362" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Left(txtLine, 1) = &quot;#&quot;]" sap:VirtualizedContainerService.HintSize="623,362" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
@@ -120,7 +121,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">[masterKey]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[className]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">[txtLine.Substring(1) + "."]</InArgument>
@@ -130,15 +131,15 @@
                 </Sequence>
               </If.Then>
             </If>
-            <If Condition="[String.IsNullOrEmpty(txtLine)]" sap:VirtualizedContainerService.HintSize="484,500" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[String.IsNullOrWhiteSpace(txtLine)]" sap:VirtualizedContainerService.HintSize="623,871" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Else>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="304,352" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="478,723" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="s:String[]">[strArr]</OutArgument>
                     </Assign.To>
@@ -146,22 +147,42 @@
                       <InArgument x:TypeArguments="s:String[]">[Split(txtLine, ",")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">[out_dictionary(masterKey + strArr(indexKey) + ".type")]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[out_dictionary(className + strArr(indexAttribute) + ".type")]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">[strArr(indexType).Trim]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_7">
                     <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">[out_dictionary(masterKey + strArr(indexKey) + ".selector")]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[out_dictionary(className + strArr(indexAttribute) + ".activityWord")]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[strArr(indexSelector)]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[strArr(indexActivityWord).Trim]</InArgument>
                     </Assign.Value>
                   </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_dictionary(className + strArr(indexAttribute) + ".selector")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[strArr(indexActivityWord)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,231" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="272,153" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[className + strArr(indexAttribute) + &quot;.type : &quot; + strArr(indexType).Trim]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
                 </Sequence>
               </If.Else>
             </If>

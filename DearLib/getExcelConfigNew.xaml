@@ -228,7 +228,7 @@
                                               <OutArgument x:TypeArguments="x:Object">[out_config(tempkey)]</OutArgument>
                                             </Assign.To>
                                             <Assign.Value>
-                                              <InArgument x:TypeArguments="x:String">[Day(tempDateTime).ToString + "/" + Month(tempDateTime).ToString + "/" + Year(tempDateTime).ToString]</InArgument>
+                                              <InArgument x:TypeArguments="x:Object">[Day(tempDateTime).ToString + "/" + Month(tempDateTime).ToString + "/" + Year(tempDateTime).ToString]</InArgument>
                                             </Assign.Value>
                                           </Assign>
                                         </Sequence>
@@ -239,7 +239,7 @@
                                             <OutArgument x:TypeArguments="x:Object">[out_config(tempkey)]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[tempObj.ToString.Trim()]</InArgument>
+                                            <InArgument x:TypeArguments="x:Object">[tempObj.ToString.Trim()]</InArgument>
                                           </Assign.Value>
                                         </Assign>
                                       </If.Else>
