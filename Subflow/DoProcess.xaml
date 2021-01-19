@@ -74,6 +74,11 @@
       <Variable x:TypeArguments="x:String" Name="g_activitiesStr" />
       <Variable x:TypeArguments="x:String" Default="##" Name="g_splitStr" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="g_actionDic" />
+      <Variable x:TypeArguments="x:String" Name="g_actWordStr">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">.activityWord</Literal>
+        </Variable.Default>
+      </Variable>
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -112,13 +117,13 @@
               <av:Size x:Key="ShapeSize">200,51</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Activities String" sap:VirtualizedContainerService.HintSize="737,1686" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(g_activitiesStr, g_splitStr)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Activities String" sap:VirtualizedContainerService.HintSize="737,1585" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(g_activitiesStr, g_splitStr)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="activity" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="701,1552" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="701,1451" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -138,7 +143,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:String" Name="key" />
                         </ActivityAction.Argument>
-                        <If Condition="[key.IndexOf(&quot;.activityWord&quot;) &gt;=0 And activity.IndexOf(in_masterDic(key)) &gt;= 0]" sap:VirtualizedContainerService.HintSize="623,633" sap2010:WorkflowViewState.IdRef="If_1">
+                        <If Condition="[key.IndexOf(g_actWordStr) &gt;=0 And activity.IndexOf(in_masterDic(key)) &gt;= 0]" sap:VirtualizedContainerService.HintSize="623,633" sap2010:WorkflowViewState.IdRef="If_1">
                           <If.Then>
                             <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="478,485" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
@@ -160,7 +165,7 @@
                               </ui:CommentOut>
                               <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                                 <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[g_actionDic(key)]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String">[g_actionDic(key.Replace(g_actWordStr, ""))]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
                                   <InArgument x:TypeArguments="x:String">[Split(activity, "-&gt; ")(1)]</InArgument>
@@ -173,7 +178,6 @@
                       </ActivityAction>
                     </ui:ForEach.Body>
                   </ui:ForEach>
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="659,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[g_actionDic.Keys.Count.ToString]" />
                   <If Condition="[g_actionDic.Keys.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="659,452" sap2010:WorkflowViewState.IdRef="If_2">
                     <If.Then>
                       <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,304" sap2010:WorkflowViewState.IdRef="Sequence_5">
