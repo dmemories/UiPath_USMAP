@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1159,2385</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1230,2656</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -72,7 +72,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetActivities" sap:VirtualizedContainerService.HintSize="1169,2220" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="GetActivities" sap:VirtualizedContainerService.HintSize="1240,2491" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="imple." Name="implementKey" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="serviceDic" />
@@ -82,14 +82,14 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1127,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_referId]" />
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1127,1927" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f1c2c50da8051012cc363eb01a5ee10e" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1198,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_referId]" />
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="1198,2198" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="f1c2c50da8051012cc363eb01a5ee10e" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1093,1781" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1093,2052" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="referIdRow" />
             </Sequence.Variables>
@@ -148,6 +148,18 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1051,231" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="272,153" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[&quot;&lt;webctrl id='activity_waiting*' parentid='btn_activity_waiting*' tag='I' tableRow='&quot; + referIdRow + &quot;' /&gt;&quot;]" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
             <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each Activity Row" sap:VirtualizedContainerService.HintSize="1051,1299" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Enumerable.Range(2, 99)]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:Int32">
@@ -257,7 +269,7 @@
                                             <OutArgument x:TypeArguments="x:String">[out_activitiesStr]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[out_activitiesStr + activityTxt + in_splitStr]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[out_activitiesStr + activityTxt.Trim() + in_splitStr]</InArgument>
                                           </Assign.Value>
                                         </Assign>
                                         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
@@ -321,7 +333,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <Assign sap:VirtualizedContainerService.HintSize="1127,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+    <Assign sap:VirtualizedContainerService.HintSize="1198,60" sap2010:WorkflowViewState.IdRef="Assign_14">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_activitiesStr]</OutArgument>
       </Assign.To>

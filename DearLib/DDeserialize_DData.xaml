@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>989,2263</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>987,2223</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DeserializeJson_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -152,7 +152,7 @@
                       <OutArgument x:TypeArguments="x:String">[out_dictionary(className + strArr(indexAttribute) + ".type")]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[strArr(indexType).Trim]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[strArr(indexType).Trim()]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_7">
@@ -168,7 +168,7 @@
                       <OutArgument x:TypeArguments="x:String">[out_dictionary(className + strArr(indexAttribute) + ".selector")]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[strArr(indexActivityWord)]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[strArr(indexSelector).Trim()]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,231" sap2010:WorkflowViewState.IdRef="CommentOut_1">

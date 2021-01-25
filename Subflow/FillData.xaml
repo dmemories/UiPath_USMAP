@@ -1,11 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="FillData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_actionDic" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_masterDic" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="in_timeout" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>899,1158</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>989,1504</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FillData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -67,60 +69,54 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FillData" sap:VirtualizedContainerService.HintSize="659,1093" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FillData" sap:VirtualizedContainerService.HintSize="632,1339" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="val" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="617,195" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_actionDic.Keys]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="590,1247" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_actionDic.Keys]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="key" />
           </ActivityAction.Argument>
-          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[key + &quot; : &quot; +  in_actionDic(key)]" />
-        </ActivityAction>
-      </ui:ForEach.Body>
-    </ui:ForEach>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="617,766" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="581,688" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap:VirtualizedContainerService.HintSize="539,596" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence sap:VirtualizedContainerService.HintSize="554,1113" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="selector" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[val]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[serviceDic(key).ToString]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap:VirtualizedContainerService.HintSize="512,60" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[selector]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[in_keyDic(key + ".selector")]</InArgument>
+                <InArgument x:TypeArguments="x:String">[in_masterDic(key + ".selector")]</InArgument>
               </Assign.Value>
             </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="497,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Selector : &quot; + selector + vbCrlf + &quot;Type : &quot; + in_keyDic(key + &quot;.type&quot;) + vbCrlf + &quot;Value : &quot; + val]" />
-            <Switch x:TypeArguments="x:Int32" DisplayName="Switch Type" Expression="[CInt(in_keyDic(key + &quot;.type&quot;))]" sap:VirtualizedContainerService.HintSize="497,203" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+            <Assign sap:VirtualizedContainerService.HintSize="512,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[val]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_actionDic(key).ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="512,64" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Key : [&quot; + key + &quot;]&quot; + vbCrLf + &#xD;&#xA;&quot;Selector : [&quot; + selector + &quot;]&quot; + vbCrLf + &#xD;&#xA;&quot;Value : [&quot; + val + &quot;]&quot;]" />
+            <Switch x:TypeArguments="x:Int32" DisplayName="Switch Type" Expression="[CInt(in_masterDic(key + &quot;.type&quot;))]" sap:VirtualizedContainerService.HintSize="512,346" sap2010:WorkflowViewState.IdRef="Switch`1_1">
               <Switch.Default>
-                <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[&quot;Unknown Type : &quot; + in_keyDic(key + &quot;.type&quot;)]" />
+                <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[&quot;Unknown Type : &quot; + in_masterDic(key + &quot;.type&quot;)]" />
               </Switch.Default>
               <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" x:Key="1" sap:VirtualizedContainerService.HintSize="359,96" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[val]">
                 <ui:SelectItem.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6d971706-9a00-4df1-94c6-44dc41e2564b" Selector="[selector]" TimeoutMS="[in_timeout]">
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6d971706-9a00-4df1-94c6-44dc41e2564b" Selector="[&quot;&lt;html app='firefox.exe' title='USMAP' /&gt; &quot; + selector]" TimeoutMS="[in_timeout]">
                     <ui:Target.WaitForReady>
                       <InArgument x:TypeArguments="ui:WaitForReady" />
                     </ui:Target.WaitForReady>
@@ -155,7 +151,7 @@
                   </ui:Target>
                 </ui:Click.Target>
               </ui:Click>
-              <Sequence x:Key="3" DisplayName="Inject Script Document Id" sap:VirtualizedContainerService.HintSize="376,486" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence x:Key="3" DisplayName="Inject Script Document Id" sap:VirtualizedContainerService.HintSize="376,483" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Int32" Name="startPos" />
                   <Variable x:TypeArguments="x:Int32" Name="endPos" />
@@ -197,9 +193,29 @@
                 </ui:InjectJsScript>
               </Sequence>
             </Switch>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="512,331" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,253" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Firefox" DisplayName="Attach Browser 'firefox.exe  USMAP'" sap:VirtualizedContainerService.HintSize="434,161" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="986774094184d0f3008270eecdfb6614" Selector="&lt;html app='firefox.exe' title='USMAP' /&gt;">
+                    <ui:BrowserScope.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </ui:BrowserScope.Body>
+                  </ui:BrowserScope>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
           </Sequence>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
   </Sequence>
 </Activity>

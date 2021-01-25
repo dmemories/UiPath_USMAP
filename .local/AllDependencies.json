@@ -3576,15 +3576,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alkaiser\\.nuget\\packages\\": {}
+    "C:\\Users\\piyab505\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Main",
       "projectName": "Main",
-      "projectPath": "C:\\Users\\Alkaiser\\Desktop\\UiPath_USMAP\\.local",
-      "packagesPath": "C:\\Users\\Alkaiser\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alkaiser\\Desktop\\UiPath_USMAP\\.local"
+      "projectPath": "C:\\Users\\piyab505\\Desktop\\USMAP\\UiPath_USMAP\\.local",
+      "packagesPath": "C:\\Users\\piyab505\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\piyab505\\Desktop\\USMAP\\UiPath_USMAP\\.local"
     },
     "frameworks": {
       "net461": {
