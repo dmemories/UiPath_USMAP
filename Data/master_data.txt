@@ -1,18 +1,21 @@
 // #className
 // Attribute, ActionType (0: click, 1: list, 2: textbox, 3: injectJs), ActivityWord, Selector
+// CP Whitelist
 
 #test
-ipAddr,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputIpAddress' tag='SELECT'/>
-port,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputPort' tag='SELECT'/>
+ipAddr,		1, Test Stage > IP Address,			<webctrl id='inputIpAddress' tag='SELECT'/>
+port,		1, Test Stage > Port,				<webctrl id='inputPort' tag='SELECT'/>
 ipHyb,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputIpAddressHybrid' tag='SELECT'/>
 ipSFTP,		1, Test Stage > IP Address for SFTP,		<webctrl id='inputIpipSftp' tag='SELECT'/>
 spUrl,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputSpUrl' tag='SELECT'/>
 notiUrl,	1, Test Stage > Notify/Service URL,		<webctrl id='inputNotifyUrl' tag='SELECT'/>
 
 #prod
-ipAddr,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputIpAddress2' tag='SELECT' />
-port,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputPort2' tag='SELECT' />
+ipAddr,		1, Production Stage > IP Address,		<webctrl id='inputIpAddress2' tag='SELECT' />
+port,		1, Production Stage > Port,			<webctrl id='inputPort2' tag='SELECT' />
 ipHyb,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputHybridPort2' tag='SELECT' />
 ipSFTP,		1, Production Stage > IP Address for SFTP,	<webctrl id='ipSftp2' tag='SELECT' />
 spUrl,		1, xxxxxxxxxxxxxxxxxx,				<webctrl id='inputSpUrl2' tag='SELECT' />
 notiUrl,	1, Production Stage > Notify/Service URL,	<webctrl id='inputNotifyUrl2' tag='SELECT' />
+
+
