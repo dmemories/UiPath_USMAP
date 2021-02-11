@@ -1,29 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Activity mc:Ignorable="sap sap2010" x:Class="DBrowser_Open" this:DBrowser_Open.whichBrowser="Firefox" this:DBrowser_Open.isNewSession="True" this:DBrowser_Open.wantClearOldBrowser="True" this:DBrowser_Open.timeout="9000" this:DBrowser_Open.endWhenError="True" this:DBrowser_Open.wantMaximize="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DBrowser_Open" this:DBrowser_Open.in_browserType="firefox" this:DBrowser_Open.in_newSession="True" this:DBrowser_Open.in_incognitoMode="False" this:DBrowser_Open.in_clearOldBrowser="False" this:DBrowser_Open.in_maximizeWindow="True" this:DBrowser_Open.in_endWhenError="True" this:DBrowser_Open.in_checkWebTimeout="20000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="whichBrowser" Type="InArgument(x:String)" />
-    <x:Property Name="url" Type="InArgument(x:String)" />
-    <x:Property Name="isNewSession" Type="InArgument(x:Boolean)" />
-    <x:Property Name="wantClearOldBrowser" Type="InArgument(x:Boolean)" />
-    <x:Property Name="timeout" Type="InArgument(x:Int32)" />
-    <x:Property Name="endWhenError" Type="InArgument(x:Boolean)" />
-    <x:Property Name="wantMaximize" Type="InArgument(x:Boolean)" />
-    <x:Property Name="checkSelectorStr" Type="InArgument(x:String)" />
-    <x:Property Name="webSelectorFound" Type="OutArgument(x:Boolean)" />
-    <x:Property Name="returnBrowser" Type="OutArgument(ui:Browser)" />
+    <x:Property Name="in_url" Type="InArgument(x:String)" />
+    <x:Property Name="in_browserType" Type="InArgument(x:String)" />
+    <x:Property Name="in_newSession" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_incognitoMode" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_clearOldBrowser" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_maximizeWindow" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_endWhenError" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_checkWebSelector" Type="InArgument(x:String)" />
+    <x:Property Name="in_checkWebTimeout" Type="InArgument(x:Int32)" />
+    <x:Property Name="out_foundCheckSelector" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_uiBrowser" Type="OutArgument(ui:Browser)" />
   </x:Members>
-  <this:DBrowser_Open.url>
-    <InArgument x:TypeArguments="x:String">
-      <Literal x:TypeArguments="x:String" Value="" />
-    </InArgument>
-  </this:DBrowser_Open.url>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1110,2384</sap:VirtualizedContainerService.HintSize>
-  <sap2010:WorkflowViewState.IdRef>DClick_1</sap2010:WorkflowViewState.IdRef>
+  <sap:VirtualizedContainerService.HintSize>2035,2214</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>DBrowser_Open_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="44">
+    <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -45,15 +40,17 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
-      <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
-      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
-    </scg:List>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+    </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
+    <sco:Collection x:TypeArguments="AssemblyReference">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -70,335 +67,66 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-    </scg:List>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DBrowser_Open" sap:VirtualizedContainerService.HintSize="1031,2219" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DBrowser_Open" sap:VirtualizedContainerService.HintSize="2045,2049" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="seqName">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String" xml:space="preserve">DBrowser_Open : </Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="realProcessName" />
+      <Variable x:TypeArguments="ui:BrowserType" Name="browserType" />
+      <Variable x:TypeArguments="x:String" Default="DBrowser_Open : " Name="seqName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="989,2127" sap2010:WorkflowViewState.IdRef="Sequence_10">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[whichBrowser]" sap:VirtualizedContainerService.HintSize="947,160" sap2010:WorkflowViewState.IdRef="Switch`1_4">
-        <Switch.Default>
-          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[realProcessName]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["iexplore"]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Switch.Default>
-        <Assign x:Key="Firefox" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[realProcessName]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">["firefox"]</InArgument>
-          </Assign.Value>
-        </Assign>
-        <Assign x:Key="Chrome" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[realProcessName]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">chrome</InArgument>
-          </Assign.Value>
-        </Assign>
-      </Switch>
-      <If Condition="[wantClearOldBrowser]" sap:VirtualizedContainerService.HintSize="947,777" sap2010:WorkflowViewState.IdRef="If_13">
-        <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="478,629" sap2010:WorkflowViewState.IdRef="Sequence_18">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,192" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:KillProcess Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="KillProcess_3" ProcessName="[realProcessName]" />
-                </Sequence>
-              </ui:CommentOut.Body>
-            </ui:CommentOut>
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DearLib\DBrowser_Close.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="whichBrowser">[realProcessName]</InArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <ui:LogMessage DisplayName="Private: Log Message" sap:VirtualizedContainerService.HintSize="436,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;-----------------------------------------------------------------------------------------------&quot; &amp; vbCrLf &amp; seqName &amp; &quot; Kill Old Process Browser (&quot; &amp; realProcessName &amp; &quot;)&quot;]" />
-            <Delay mva:VisualBasic.Settings="{x:Null}" DisplayName="Delay 1 seconds" Duration="00:00:01" sap:VirtualizedContainerService.HintSize="436,22" sap2010:WorkflowViewState.IdRef="Delay_1">
-              <TextExpression.Namespaces>
-                <sco:Collection x:TypeArguments="x:String">
-                  <x:String>System.Activities</x:String>
-                  <x:String>System.Activities.Statements</x:String>
-                  <x:String>System.Activities.Expressions</x:String>
-                  <x:String>System.Activities.Validation</x:String>
-                  <x:String>System.Activities.XamlIntegration</x:String>
-                  <x:String>Microsoft.VisualBasic.Activities</x:String>
-                  <x:String>System</x:String>
-                  <x:String>System.Collections.Generic</x:String>
-                  <x:String>System.Data</x:String>
-                  <x:String>System.Diagnostics</x:String>
-                  <x:String>System.IO</x:String>
-                  <x:String>System.Linq</x:String>
-                  <x:String>System.Management.Automation</x:String>
-                  <x:String>System.Net.Mail</x:String>
-                  <x:String>System.Xml</x:String>
-                  <x:String>System.Xml.Linq</x:String>
-                  <x:String>UiPath.Library</x:String>
-                  <x:String>System.Windows.Markup</x:String>
-                </sco:Collection>
-              </TextExpression.Namespaces>
-              <TextExpression.References>
-                <sco:Collection x:TypeArguments="AssemblyReference">
-                  <AssemblyReference>System.Activities</AssemblyReference>
-                  <AssemblyReference>mscorlib</AssemblyReference>
-                  <AssemblyReference>System.Data</AssemblyReference>
-                  <AssemblyReference>System</AssemblyReference>
-                  <AssemblyReference>System.Core</AssemblyReference>
-                  <AssemblyReference>System.Management.Automation</AssemblyReference>
-                  <AssemblyReference>System.Xml</AssemblyReference>
-                  <AssemblyReference>System.Xml.Linq</AssemblyReference>
-                  <AssemblyReference>UiPath.Library</AssemblyReference>
-                  <AssemblyReference>PresentationFramework</AssemblyReference>
-                  <AssemblyReference>WindowsBase</AssemblyReference>
-                  <AssemblyReference>PresentationCore</AssemblyReference>
-                  <AssemblyReference>System.Xaml</AssemblyReference>
-                </sco:Collection>
-              </TextExpression.References>
-              <sap2010:WorkflowViewState.ViewStateManager>
-                <sap2010:ViewStateManager>
-                  <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="200,22" Id="Delay_1" />
-                </sap2010:ViewStateManager>
-              </sap2010:WorkflowViewState.ViewStateManager>
-            </Delay>
-          </Sequence>
-        </If.Then>
-        <If.Else>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;-----------------------------------------------------------------------------------------------&quot; &amp; vbCrLf &amp; seqName &amp; &quot;Skip kill old browser process.&quot;]" />
-        </If.Else>
-      </If>
-      <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[whichBrowser]" sap:VirtualizedContainerService.HintSize="947,160" sap2010:WorkflowViewState.IdRef="Switch`1_3">
-        <Switch.Default>
-          <Sequence sap:VirtualizedContainerService.HintSize="1123,648" sap2010:WorkflowViewState.IdRef="Sequence_16">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="1081,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[whichBrowser]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">IE</InArgument>
-              </Assign.Value>
-            </Assign>
-            <If Condition="[isNewSession]" sap:VirtualizedContainerService.HintSize="1081,456" sap2010:WorkflowViewState.IdRef="If_10">
-              <If.Then>
-                <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="IE" ContinueOnError="True" DisplayName="Private: Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="518,308" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" UiBrowser="[returnBrowser]" Url="[url]">
-                  <ui:OpenBrowser.Body>
-                    <ActivityAction x:TypeArguments="x:Object">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                      </ActivityAction.Argument>
-                      <If Condition="[wantMaximize]" DisplayName="Private: If" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_19">
-                        <If.Then>
-                          <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Private: Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-                        </If.Then>
-                      </If>
-                    </ActivityAction>
-                  </ui:OpenBrowser.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:OpenBrowser>
-              </If.Then>
-              <If.Else>
-                <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="IE" ContinueOnError="True" DisplayName="Private: Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="518,308" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="False" Private="False" UiBrowser="[returnBrowser]" Url="[url]">
-                  <ui:OpenBrowser.Body>
-                    <ActivityAction x:TypeArguments="x:Object">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                      </ActivityAction.Argument>
-                      <If Condition="[wantMaximize]" DisplayName="Private: If" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_24">
-                        <If.Then>
-                          <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Private: Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_6" />
-                        </If.Then>
-                      </If>
-                    </ActivityAction>
-                  </ui:OpenBrowser.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:OpenBrowser>
-              </If.Else>
-            </If>
-          </Sequence>
-        </Switch.Default>
-        <Sequence x:Key="Firefox" sap:VirtualizedContainerService.HintSize="1134,1357" sap2010:WorkflowViewState.IdRef="Sequence_25">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="x:Boolean" Name="b" />
-          </Sequence.Variables>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[isNewSession]" sap:VirtualizedContainerService.HintSize="1092,456" sap2010:WorkflowViewState.IdRef="If_11">
-            <If.Then>
-              <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="Firefox" ContinueOnError="True" DisplayName="Private: Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="518,308" sap2010:WorkflowViewState.IdRef="OpenBrowser_3" NewSession="True" Private="False" UiBrowser="[returnBrowser]" Url="[url]">
-                <ui:OpenBrowser.Body>
-                  <ActivityAction x:TypeArguments="x:Object">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                    </ActivityAction.Argument>
-                    <If Condition="[wantMaximize]" DisplayName="Private: If" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_20">
-                      <If.Then>
-                        <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Private: Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
-                      </If.Then>
-                    </If>
-                  </ActivityAction>
-                </ui:OpenBrowser.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:OpenBrowser>
-            </If.Then>
-            <If.Else>
-              <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="Firefox" ContinueOnError="True" DisplayName="Private: Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="518,308" sap2010:WorkflowViewState.IdRef="OpenBrowser_4" NewSession="False" Private="False" UiBrowser="[returnBrowser]" Url="[url]">
-                <ui:OpenBrowser.Body>
-                  <ActivityAction x:TypeArguments="x:Object">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                    </ActivityAction.Argument>
-                    <If Condition="[wantMaximize]" DisplayName="Private: If" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_21">
-                      <If.Then>
-                        <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Private: Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_3" />
-                      </If.Then>
-                    </If>
-                  </ActivityAction>
-                </ui:OpenBrowser.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:OpenBrowser>
-            </If.Else>
-          </If>
-          <If Condition="[realProcessName = &quot;firefox&quot;]" DisplayName="Firefox Protect Web" sap:VirtualizedContainerService.HintSize="1092,852" sap2010:WorkflowViewState.IdRef="If_26">
-            <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="563,704" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:UiElementExists DisplayName="Private: Protect Web Exist" Exists="[b]" sap:VirtualizedContainerService.HintSize="521,68" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
-                  <ui:UiElementExists.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="927dba1a-ba8f-46b8-95bf-1b0584c01f11" Selector="&lt;html app='firefox.exe' title='*คำเตือน*' /&gt;&#xA;&lt;ctrl name='*ขั้นสู*' role='push button' /&gt;" TimeoutMS="5000" WaitForReady="INTERACTIVE" />
-                  </ui:UiElementExists.Target>
-                </ui:UiElementExists>
-                <If Condition="[b]" DisplayName="Webprotect Exist" sap:VirtualizedContainerService.HintSize="521,504" sap2010:WorkflowViewState.IdRef="If_25">
-                  <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376,356" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Click Advance" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="DearLib\DClick.xaml">
-                        <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="whichSelector" xml:space="preserve">&lt;html app='firefox.exe' title='*คำเตือน*' /&gt;
-&lt;ctrl name='*ขั้นสู*' role='push button' /&gt;</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="whichType">2</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="timeout">4000</InArgument>
-                          <InArgument x:TypeArguments="x:Boolean" x:Key="endWhenError">True</InArgument>
-                        </ui:InvokeWorkflowFile.Arguments>
-                      </ui:InvokeWorkflowFile>
-                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Click Accept The Risk" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DearLib\DClick.xaml">
-                        <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="whichSelector" xml:space="preserve">&lt;html app='firefox.exe' title='*คำเตือน*' /&gt;
-&lt;ctrl name='*ยอมรับความเสี่ยงและดำเนินการต่อ*' role='push button' /&gt;</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="whichType">2</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="timeout">4000</InArgument>
-                          <InArgument x:TypeArguments="x:Boolean" x:Key="endWhenError">True</InArgument>
-                        </ui:InvokeWorkflowFile.Arguments>
-                      </ui:InvokeWorkflowFile>
-                    </Sequence>
-                  </If.Then>
-                </If>
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <If Condition="[realProcessName = &quot;iexplore&quot;]" DisplayName="IE Popup" sap:VirtualizedContainerService.HintSize="484,260" sap2010:WorkflowViewState.IdRef="If_27">
-                <If.Then>
-                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Click Ask Me Later" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="DearLib\DClick.xaml">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="whichSelector" xml:space="preserve">&lt;wnd app='iexplore.exe' cls='#*' title='*Explorer*' /&gt;
-&lt;wnd ctrlid='*' title='*Ask me later*' /&gt;</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="whichType">2</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="timeout">4000</InArgument>
-                      <InArgument x:TypeArguments="x:Boolean" x:Key="endWhenError">False</InArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                  </ui:InvokeWorkflowFile>
-                </If.Then>
-              </If>
-            </If.Else>
-          </If>
-        </Sequence>
-        <If x:Key="Chrome" Condition="[isNewSession]" sap:VirtualizedContainerService.HintSize="1081,456" sap2010:WorkflowViewState.IdRef="If_12">
+    <Assign sap:VirtualizedContainerService.HintSize="2003,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_browserType]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(String.IsNullOrEmpty(in_browserType), " ", in_browserType.ToLower())]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[in_clearOldBrowser]" sap:VirtualizedContainerService.HintSize="2003,260" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DBrowser_Close workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DearLib\DBrowser_Close.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="whichBrowser">[in_browserType]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="maxBrowser">20</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="2003,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="ui:BrowserType">[browserType]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="ui:BrowserType">[If(in_browserType = "firefox", BrowserType.Firefox, If(in_browserType = "chrome", BrowserType.Chrome, If(in_browserType = "edge", BrowserType.Edge, BrowserType.IE)))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[in_newSession]" sap:VirtualizedContainerService.HintSize="2003,412" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <If Condition="[in_incognitoMode]" sap:VirtualizedContainerService.HintSize="979,264" sap2010:WorkflowViewState.IdRef="If_4">
           <If.Then>
-            <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="Chrome" ContinueOnError="True" DisplayName="Private: Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="518,308" sap2010:WorkflowViewState.IdRef="OpenBrowser_5" NewSession="True" Private="False" UiBrowser="[returnBrowser]" Url="[url]">
+            <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="[browserType]" ContinueOnError="True" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="467,116" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="True" UiBrowser="[out_uiBrowser]" Url="[in_url]">
               <ui:OpenBrowser.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <If Condition="[wantMaximize]" DisplayName="Private: If" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_22">
-                    <If.Then>
-                      <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Private: Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_4" />
-                    </If.Then>
-                  </If>
                 </ActivityAction>
               </ui:OpenBrowser.Body>
               <sap:WorkflowViewStateService.ViewState>
@@ -409,17 +137,12 @@
             </ui:OpenBrowser>
           </If.Then>
           <If.Else>
-            <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="Chrome" ContinueOnError="True" DisplayName="Private: Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="518,308" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" NewSession="False" Private="False" UiBrowser="[returnBrowser]" Url="[url]">
+            <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="[browserType]" ContinueOnError="True" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="467,116" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="True" Private="False" UiBrowser="[out_uiBrowser]" Url="[in_url]">
               <ui:OpenBrowser.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <If Condition="[wantMaximize]" DisplayName="Private: If" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_23">
-                    <If.Then>
-                      <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Private: Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_5" />
-                    </If.Then>
-                  </If>
                 </ActivityAction>
               </ui:OpenBrowser.Body>
               <sap:WorkflowViewStateService.ViewState>
@@ -430,54 +153,103 @@
             </ui:OpenBrowser>
           </If.Else>
         </If>
-      </Switch>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="947,91" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[seqName &amp; &quot; Launch Browser [&quot; &amp; whichBrowser &amp; &quot;] with &quot; &amp; if(isNewSession, &quot;new&quot;, &quot;old&quot;) &amp; &quot;session, Url (&quot; &amp; url &amp; &quot;)&quot;]" />
-      <If Condition="[String.IsNullOrEmpty(checkSelectorStr)]" sap:VirtualizedContainerService.HintSize="947,687" sap2010:WorkflowViewState.IdRef="If_17">
-        <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_20">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[seqName &amp; &quot;Don't check title browser, No return any value.&quot; &amp; vbCrLf]" />
-            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Boolean">[webSelectorFound]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-              </Assign.Value>
-            </Assign>
-          </Sequence>
-        </If.Then>
-        <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="526,539" sap2010:WorkflowViewState.IdRef="Sequence_21">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:UiElementExists DisplayName="Private: Element Exists" Exists="[webSelectorFound]" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
-              <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cf29b3b9-5aeb-4c9f-b85e-76982996e914" Selector="[&quot;&lt;html app='&quot; &amp; realProcessName &amp; &quot;.exe' title='&quot; &amp; checkSelectorStr &amp; &quot;' /&gt;&quot;]" TimeoutMS="[timeout]" WaitForReady="INTERACTIVE" />
-              </ui:UiElementExists.Target>
-            </ui:UiElementExists>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[seqName &amp; &quot;Return browser title (&quot;&amp; vbCrlf &amp; &#xA;&quot;&lt;html app='&quot; &amp; realProcessName &amp; &quot;.exe' title='&quot; &amp; checkSelectorStr &amp; &quot;' /&gt;&quot; &amp; vbCrLf &amp;&#xA;&quot;) Return : &quot; &amp; If(webSelectorFound, &quot;True&quot;, &quot;False&quot;) &amp; vbCrLf]" />
-            <If Condition="[not(webSelectorFound) and endWhenError]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_18">
-              <If.Then>
-                <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1">
-                  <TerminateWorkflow.Reason>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
-                  </TerminateWorkflow.Reason>
-                </TerminateWorkflow>
-              </If.Then>
-            </If>
-          </Sequence>
-        </If.Else>
-      </If>
-    </Sequence>
+      </If.Then>
+      <If.Else>
+        <If Condition="[in_incognitoMode]" sap:VirtualizedContainerService.HintSize="979,264" sap2010:WorkflowViewState.IdRef="If_5">
+          <If.Then>
+            <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="[browserType]" ContinueOnError="True" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="467,116" sap2010:WorkflowViewState.IdRef="OpenBrowser_3" NewSession="False" Private="True" UiBrowser="[out_uiBrowser]" Url="[in_url]">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:OpenBrowser>
+          </If.Then>
+          <If.Else>
+            <ui:OpenBrowser CommunicationMethod="{x:Null}" BrowserType="[browserType]" ContinueOnError="True" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="467,116" sap2010:WorkflowViewState.IdRef="OpenBrowser_4" NewSession="False" Private="False" UiBrowser="[out_uiBrowser]" Url="[in_url]">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:OpenBrowser>
+          </If.Else>
+        </If>
+      </If.Else>
+    </If>
+    <If Condition="[in_maximizeWindow]" DisplayName="If" sap:VirtualizedContainerService.HintSize="2003,278" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="[browserType]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="434,130" sap2010:WorkflowViewState.IdRef="BrowserScope_1" Selector="[&quot;&lt;html app='&quot;+ in_url +&quot;.exe' title='*' /&gt;&quot;]">
+          <ui:BrowserScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <ui:MaximizeWindow Window="{x:Null}" ContinueOnError="True" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            </ActivityAction>
+          </ui:BrowserScope.Body>
+        </ui:BrowserScope>
+      </If.Then>
+    </If>
+    <If Condition="[String.IsNullOrEmpty(in_checkWebSelector)]" sap:VirtualizedContainerService.HintSize="2003,687" sap2010:WorkflowViewState.IdRef="If_6">
+      <If.Then>
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[seqName &amp; &quot;Don't check title browser, No return any value.&quot; &amp; vbCrLf]" />
+          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[out_foundCheckSelector]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,539" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:UiElementExists DisplayName="Element Exists" Exists="[out_foundCheckSelector]" sap:VirtualizedContainerService.HintSize="484,68" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cf29b3b9-5aeb-4c9f-b85e-76982996e914" Selector="[in_checkWebSelector]" TimeoutMS="[in_checkWebTimeout]" WaitForReady="INTERACTIVE" />
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[seqName &amp; &quot;Return browser title (&quot;&amp; vbCrlf &amp; &#xA;&quot;&lt;html app='&quot; &amp; in_url &amp; &quot;.exe' title='&quot; &amp; in_checkWebSelector &amp; &quot;' /&gt;&quot; &amp; vbCrLf &amp;&#xA;&quot;) Return : &quot; &amp; If(out_foundCheckSelector, &quot;True&quot;, &quot;False&quot;) &amp; vbCrLf]" />
+          <If Condition="[not(out_foundCheckSelector) and in_endWhenError]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_7">
+            <If.Then>
+              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1">
+                <TerminateWorkflow.Reason>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </TerminateWorkflow.Reason>
+              </TerminateWorkflow>
+            </If.Then>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>

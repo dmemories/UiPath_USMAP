@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1110,638</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1019,917</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>closeBrowser_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="22">
+    <scg:List x:TypeArguments="x:String" Capacity="44">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -32,6 +32,8 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -64,13 +66,13 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DBrowser_Close" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DBrowser_Close" sap:VirtualizedContainerService.HintSize="806,752" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart sap:VirtualizedContainerService.HintSize="764,660" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="ui:Browser" Name="myBrowser" />
         <Variable x:TypeArguments="ui:Window" Name="myWindow" />
@@ -78,158 +80,169 @@
         <Variable x:TypeArguments="x:String" Name="browserSelector" />
         <Variable x:TypeArguments="x:Int32" Default="3000" Name="timeout" />
         <Variable x:TypeArguments="x:Boolean" Default="False" Name="b" />
-        <Variable x:TypeArguments="x:String" Name="seqName">
-          <Variable.Default>
-            <Literal x:TypeArguments="x:String">DBrowser_Close</Literal>
-          </Variable.Default>
-        </Variable>
+        <Variable x:TypeArguments="x:String" Default="DBrowser_Close" Name="seqName" />
         <Variable x:TypeArguments="x:Int32" Default="0" Name="i" />
       </Flowchart.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <av:Point x:Key="ShapeLocation">120,12.5</av:Point>
           <av:Size x:Key="ShapeSize">60,75</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">180,50 420,50 420,107.5</av:PointCollection>
           <x:Double x:Key="Width">730</x:Double>
           <x:Double x:Key="Height">623.5</x:Double>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
         <x:Reference>__ReferenceID9</x:Reference>
       </Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0">
+      <FlowDecision x:Name="__ReferenceID0" Condition="[b and i &lt; maxBrowser]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">320,358.5</av:Point>
-            <av:Size x:Key="ShapeSize">200,51</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">420,409.5 420,526.5</av:PointCollection>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">380.5,520.5</av:Point>
+            <av:Size x:Key="ShapeSize">79,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">380.5,564 230.5,564</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">459.5,564 509.5,564</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:UiElementExists DisplayName="Element Exists" Exists="[b]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-          <ui:UiElementExists.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fe5d73b6-6af6-41d2-9953-7868deb2dff9" Selector="[browserSelector]" TimeoutMS="[timeout]" WaitForReady="INTERACTIVE" />
-          </ui:UiElementExists.Target>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:UiElementExists>
-        <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID1" Condition="[b and i &lt; maxBrowser]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+        <FlowDecision.True>
+          <FlowStep x:Name="__ReferenceID7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <av:Point x:Key="ShapeLocation">380.5,526.5</av:Point>
-                <av:Size x:Key="ShapeSize">79,87</av:Size>
-                <av:PointCollection x:Key="TrueConnector">380.5,570 230.5,570</av:PointCollection>
-                <av:PointCollection x:Key="FalseConnector">459.5,570 510,570</av:PointCollection>
+                <av:Point x:Key="ShapeLocation">30.5,538.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,51</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">130.5,538.5 130.5,515.5</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <FlowDecision.True>
-              <FlowStep x:Name="__ReferenceID7">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;    (&quot; &amp; i.ToString &amp; &quot;)(Found) : &quot;  &amp; browserSelector]" />
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">30.5,544.5</av:Point>
+                    <av:Point x:Key="ShapeLocation">30.5,464.5</av:Point>
                     <av:Size x:Key="ShapeSize">200,51</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">130.5,544.5 130.5,515.5</av:PointCollection>
+                    <av:PointCollection x:Key="ConnectorLocation">130.5,464.5 130.5,434.5 130,434.5 130,431</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;    (&quot; &amp; i.ToString &amp; &quot;)(Found) : &quot;  &amp; browserSelector]" />
-                <FlowStep.Next>
-                  <FlowStep x:Name="__ReferenceID4">
+                <Switch x:TypeArguments="x:Int32" DisplayName="Private: Attach Browser" Expression="[browserId]" sap:VirtualizedContainerService.HintSize="496,351" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                  <Switch.Default>
+                    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="IE" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="BrowserScope_2" Selector="[browserSelector]" UiBrowser="[myBrowser]">
+                      <ui:BrowserScope.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                          </ActivityAction.Argument>
+                        </ActivityAction>
+                      </ui:BrowserScope.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:BrowserScope>
+                  </Switch.Default>
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" x:Key="1" BrowserType="Firefox" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,123" sap2010:WorkflowViewState.IdRef="BrowserScope_3" Selector="[browserSelector]" UiBrowser="[myBrowser]">
+                    <ui:BrowserScope.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </ui:BrowserScope.Body>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:Point x:Key="ShapeLocation">30.5,464.5</av:Point>
-                        <av:Size x:Key="ShapeSize">200,51</av:Size>
-                        <av:PointCollection x:Key="ConnectorLocation">130.5,464.5 130.5,434.5 130,434.5 130,431</av:PointCollection>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Switch x:TypeArguments="x:Int32" DisplayName="Private: Attach Browser" Expression="[browserId]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Switch`1_3">
-                      <Switch.Default>
-                        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="IE" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="BrowserScope_2" Selector="[browserSelector]" UiBrowser="[myBrowser]">
-                          <ui:BrowserScope.Body>
-                            <ActivityAction x:TypeArguments="x:Object">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                              </ActivityAction.Argument>
-                            </ActivityAction>
-                          </ui:BrowserScope.Body>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:BrowserScope>
-                      </Switch.Default>
-                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" x:Key="1" BrowserType="Firefox" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="BrowserScope_3" Selector="[browserSelector]" UiBrowser="[myBrowser]">
-                        <ui:BrowserScope.Body>
-                          <ActivityAction x:TypeArguments="x:Object">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                            </ActivityAction.Argument>
-                          </ActivityAction>
-                        </ui:BrowserScope.Body>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:BrowserScope>
-                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" x:Key="2" BrowserType="Chrome" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="BrowserScope_4" Selector="[browserSelector]" UiBrowser="[myBrowser]">
-                        <ui:BrowserScope.Body>
-                          <ActivityAction x:TypeArguments="x:Object">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                            </ActivityAction.Argument>
-                          </ActivityAction>
-                        </ui:BrowserScope.Body>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:BrowserScope>
-                    </Switch>
+                  </ui:BrowserScope>
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" x:Key="2" BrowserType="Chrome" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,123" sap2010:WorkflowViewState.IdRef="BrowserScope_4" Selector="[browserSelector]" UiBrowser="[myBrowser]">
+                    <ui:BrowserScope.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </ui:BrowserScope.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:BrowserScope>
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" x:Key="3" BrowserType="Edge" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,123" sap2010:WorkflowViewState.IdRef="BrowserScope_5" Selector="[browserSelector]" UiBrowser="[myBrowser]">
+                    <ui:BrowserScope.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </ui:BrowserScope.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:BrowserScope>
+                </Switch>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">30,409</av:Point>
+                        <av:Size x:Key="ShapeSize">200,22</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">130,409 131,409 131,380</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:CloseTab Browser="[myBrowser]" ContinueOnError="True" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CloseTab_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CloseTab>
                     <FlowStep.Next>
-                      <FlowStep x:Name="__ReferenceID2">
+                      <FlowStep x:Name="__ReferenceID8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <av:Point x:Key="ShapeLocation">30,409</av:Point>
-                            <av:Size x:Key="ShapeSize">200,22</av:Size>
-                            <av:PointCollection x:Key="ConnectorLocation">130,409 131,409 131,380</av:PointCollection>
+                            <av:Point x:Key="ShapeLocation">0,320</av:Point>
+                            <av:Size x:Key="ShapeSize">262,60</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">262,350 292,350 292,405 320,405</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:CloseTab Browser="[myBrowser]" ContinueOnError="True" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CloseTab_1">
+                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[i + 1]</InArgument>
+                          </Assign.Value>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </ui:CloseTab>
+                        </Assign>
                         <FlowStep.Next>
-                          <FlowStep x:Name="__ReferenceID8">
+                          <FlowStep x:Name="__ReferenceID3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:Point x:Key="ShapeLocation">0,320</av:Point>
-                                <av:Size x:Key="ShapeSize">262,60</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">262,350 292,350 292,384 320,384</av:PointCollection>
+                                <av:Point x:Key="ShapeLocation">320,379.5</av:Point>
+                                <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">420,430.5 420,520.5</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Int32">[i + 1]</InArgument>
-                              </Assign.Value>
+                            <ui:UiElementExists DisplayName="Element Exists" Exists="[b]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                              <ui:UiElementExists.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="82c92c52-b00d-4e45-a691-7668d03fe93a" Selector="[browserSelector]" TimeoutMS="[timeout]" WaitForReady="INTERACTIVE" />
+                              </ui:UiElementExists.Target>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                            </Assign>
+                            </ui:UiElementExists>
                             <FlowStep.Next>
                               <x:Reference>__ReferenceID0</x:Reference>
                             </FlowStep.Next>
@@ -240,30 +253,29 @@
                   </FlowStep>
                 </FlowStep.Next>
               </FlowStep>
-            </FlowDecision.True>
-            <FlowDecision.False>
-              <FlowStep x:Name="__ReferenceID3">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">510,544.5</av:Point>
-                    <av:Size x:Key="ShapeSize">200,51</av:Size>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[seqName &amp; &quot; : (&quot; &amp; whichBrowser.ToUpper &amp; &quot;) : Finished&quot; &amp; vbCrLf &amp; vbCrLf]">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:LogMessage>
-              </FlowStep>
-            </FlowDecision.False>
-          </FlowDecision>
-        </FlowStep.Next>
-      </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowDecision.True>
+        <FlowDecision.False>
+          <FlowStep x:Name="__ReferenceID2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">509.5,538.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,51</av:Size>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[seqName &amp; &quot; : (&quot; &amp; whichBrowser.ToUpper &amp; &quot;) : Finished&quot; &amp; vbCrLf &amp; vbCrLf]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+          </FlowStep>
+        </FlowDecision.False>
+      </FlowDecision>
       <x:Reference>__ReferenceID1</x:Reference>
       <x:Reference>__ReferenceID2</x:Reference>
-      <x:Reference>__ReferenceID3</x:Reference>
       <FlowStep x:Name="__ReferenceID5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -344,6 +356,29 @@
               </Assign.Value>
             </Assign>
           </Sequence>
+          <Sequence x:Key="edge" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[browserId]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">3</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[browserSelector]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">&lt;html app='msedge.exe' title='*' /&gt;</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
         </Switch>
         <FlowStep.Next>
           <FlowStep x:Name="__ReferenceID6">
@@ -351,7 +386,7 @@
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">320,278.5</av:Point>
                 <av:Size x:Key="ShapeSize">200,51</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">420,329.5 420,358.5</av:PointCollection>
+                <av:PointCollection x:Key="ConnectorLocation">420,329.5 420,379.5</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;-----------------------------------------------------------------------------------------------&quot; &amp; vbCrLf &amp; seqName &amp; &quot; : (&quot; &amp; whichBrowser.ToUpper &amp; &quot;) : Starting...&quot;]">
@@ -362,7 +397,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
             <FlowStep.Next>
-              <x:Reference>__ReferenceID0</x:Reference>
+              <x:Reference>__ReferenceID3</x:Reference>
             </FlowStep.Next>
           </FlowStep>
         </FlowStep.Next>
@@ -396,6 +431,7 @@
       <x:Reference>__ReferenceID6</x:Reference>
       <x:Reference>__ReferenceID7</x:Reference>
       <x:Reference>__ReferenceID8</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
     </Flowchart>
   </Sequence>
 </Activity>
