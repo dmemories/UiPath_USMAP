@@ -126,7 +126,7 @@
                     <av:PointCollection x:Key="ConnectorLocation">130.5,464.5 130.5,434.5 130,434.5 130,431</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Switch x:TypeArguments="x:Int32" DisplayName="Private: Attach Browser" Expression="[browserId]" sap:VirtualizedContainerService.HintSize="496,351" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                <Switch x:TypeArguments="x:Int32" DisplayName="Private: Attach Browser" Expression="[browserId]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Switch`1_3">
                   <Switch.Default>
                     <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="IE" ContinueOnError="True" DisplayName="Private: Attach Browser" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="BrowserScope_2" Selector="[browserSelector]" UiBrowser="[myBrowser]">
                       <ui:BrowserScope.Body>

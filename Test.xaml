@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Tset" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1019,805" sap2010:WorkflowViewState.IdRef="Tset_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Tset" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1019,831" sap2010:WorkflowViewState.IdRef="Tset_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="70">
+    <scg:List x:TypeArguments="x:String" Capacity="36">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -40,7 +40,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -76,51 +76,31 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Tset" sap:VirtualizedContainerService.HintSize="376,305" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Tset" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="i" />
       <Variable x:TypeArguments="x:Boolean" Name="b" />
+      <Variable x:TypeArguments="ui:UiElement" Name="e" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DBrowser_Open workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="DearLib\DBrowser_Open.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_url">
-          <Literal x:TypeArguments="x:String">https://www.google.co.th</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_browserType">
-          <Literal x:TypeArguments="x:String">firefox</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_newSession">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_incognitoMode">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_clearOldBrowser">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_maximizeWindow">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_endWhenError">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_checkWebSelector">
-          <Literal x:TypeArguments="x:String">&lt;html app='firefox.exe' title='*' /&gt;</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_checkWebTimeout">
-          <Literal x:TypeArguments="x:Int32" Value="10000" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_foundCheckSelector">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="b" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="ui:Browser" x:Key="out_uiBrowser" />
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[if(b,&quot;1&quot;,&quot;2&quot;)]" />
+    <ui:WaitImageAppear FoundElement="{x:Null}" DisplayName="Find Image 'firefox.exe  ITServiceD...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitImageAppear_2">
+      <ui:WaitImageAppear.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAcCAYAAADyfuiHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPSSURBVGhD7ZZrSJNRGMf7HgT1qfpmbLYte2NC62IXE5eEJNW6UFJouYqCRZZFhBeKTEZ0owgr64PFUJJWGt00KqVVYIqm1qigixWhoV2M/PLvec85r5uXmmznW+cHBz335/x8znkdA4UUlEhJKJGSUCIloURKQomUhBIpCSVSEn8X2e7FArMV2VdFPYy2EifizFtQJer/DXumUGkWlcEokaOhLgcYZwPixwL2VGDiBMD3XXRylMjR8rMWmEy6xruAL79FY4iYRXbd3otUu0Z1KxUN09N24nonH4euBhSvXQibRe+zIt6ejq2Vb9AvuqtyqH3RQfh9Hr5Gjp9aO1C8iNqzzqK60IWZNn1uAmype3Gri89DZyU2LpyJeLbn0HWN+SdQsT2N722ZgxVnnuLxeTeStYTh69HM15UiBn1Nix2z13rxcKCfxO2ZCqSXAZsnAeuqRXuIGEXegJsCdXiqEfzQiQ9Unl0rRy0T2QGvMwHaci9uB42+PKRYHHDX9LJ1mEjaQ1t+AP4mGtP9i81jIuiwKbnVeKavG6xAdqIVpkwfevSJPc/xVB9v7Fm2AZp5PvIb9U5jvgMZJbUsroYiPV7aJ/MCX6/pLFZqViwo6dAnoKdmGzRLMty+Zr5mMIDjmQ6YnMfQxkYQ71uBr/Tz9wug9SdvCyNGkffgoYBYgExCGHW7MM2ciYvs5CEC++ciLqMUumsm0rEPD40UZQgRa8q5NEHLoRTKXi87WH9rKVYn2WGi+EzabKRuWs9iTTnyinqNjLwykPn8LE4Ut4s6enFxDY1hN+AjTmdYkbj/Ce8y6CnHSnMiPHWiHoHoRToKEKDf+15WIHfZPHbNTFoask4+wCf9BFe3sCwYsQgh/Grz30MIEeyQIdiebGwj8ufSXs4CkenN8Betoow0MmyE+cNEir3Dn5KhMYoy0vlH4u8ixbVdfPKtqBt045yLNhmSMej/hlZ2da1IP/NRZKQLR9tCV3CgfP7GsiU6kX5k0wHX+cJvAG+LTiTPyBk7aobHSaW7j4+PxD9E9qOlZAlM+ttRFhBvIP31c6mN3h9Pna6iHkfzTuGu8V4FL2E9XXXjivE3Urx/IrDgo5sIiI9RbBl5GA0ipstbk9k1j05k2Bs5cE6+7t07HfjBRkTmHyJ1fqGRvnSDv8puHK/vFv3vUJXnQtKgr10pWozHqe8lLm9Ph519KcX8WVkoi0nk4DcyzjYPSwtPYTfNiVaknjSf7nuxOuw/Af3tTSqoF/2RiSBSMVqUSEkokZJQIiWhREpCiZSEEikJJVISSqQklEgpAH8AAM+MSOqhyowAAAAASUVORK5CYII=" />
+      </ui:WaitImageAppear.Image>
+      <ui:WaitImageAppear.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fec6b71d-78a2-4042-b97a-35175d46945f" Selector="&lt;html app='firefox.exe' title='ITServiceDesk' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:WaitImageAppear.Target>
+    </ui:WaitImageAppear>
   </Sequence>
 </Activity>

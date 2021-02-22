@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>987,1649</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1106,1649</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -160,13 +160,10 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1ec88b18-5d95-49f7-b7b3-73ad345febfa" Selector="&lt;wnd app='firefox.exe' cls='MozillaWindowClass' title='::Employee Service*' idx='*' /&gt;&lt;uia role='group' /&gt;&lt;uia name='*' role='button' enabled='true' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1ec88b18-5d95-49f7-b7b3-73ad345febfa" Selector="&lt;wnd app='firefox.exe' cls='MozillaWindowClass' title='::Employee Service::*' idx='*' /&gt;&lt;uia role='group' /&gt;&lt;uia name='ดำเนินการต่อ' role='button' /&gt;" WaitForReady="COMPLETE">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
-          <ui:Target.WaitForReady>
-            <InArgument x:TypeArguments="ui:WaitForReady" />
-          </ui:Target.WaitForReady>
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
